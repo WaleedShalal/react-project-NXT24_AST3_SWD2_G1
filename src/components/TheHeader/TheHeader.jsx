@@ -1,23 +1,25 @@
-import { useEffect } from "react";
+import { Link, NavLink } from "react-router";
 
-function TheHeader({ headerNavLinks }) {
-  console.log("TheHeader Component");
-  // 3- The code in cleanup function will be fired if component in unmounted === removed from DOM
-  console.log("TheHeader Component Before useEffect Num 3");
-  useEffect(() => {
-    console.log("TheHeader Component From useEffect Num 3");
-    return () =>
-      console.log("TheHeader Component From useEffect CleanUp Num 3");
-  }, []);
-  console.log("TheHeader Component After useEffect Num 3");
+import "./TheHeader.css";
 
+const headerNavLinks = [
+  { path: "/", name: "Home" },
+  { path: "/admin", name: "Admin" },
+  { path: "/products", name: "Products" },
+  { path: "/category", name: "Category" },
+  { path: "/cart", name: "Cart" },
+  { path: "/login", name: "Login" },
+  { path: "/register", name: "Resgister" },
+];
+
+function TheHeader() {
   return (
     <header>
       <nav>
-        <ul>
+        <ul className="list-unstyled d-flex justify-content-between">
           {headerNavLinks.map(({ path, name }) => (
             <li key={path}>
-              <a href={path}>{name}</a>
+              <NavLink to={path}>{name}</NavLink>
             </li>
           ))}
         </ul>
