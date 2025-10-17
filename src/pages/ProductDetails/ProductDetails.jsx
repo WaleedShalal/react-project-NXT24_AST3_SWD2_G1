@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useLoaderData } from "react-router";
 
 import useFetch from "../../hooks/useFetch";
 
@@ -9,6 +10,10 @@ import useWindowSize from "../../hooks/useWindowSize";
 const URL = "https://fakestoreapi.com/products/";
 
 export default function ProductDetails() {
+  console.log("ProductDetails Component");
+
+  const loaderData = useLoaderData();
+  console.log("🚀 ~ ProductDetails ~ loaderData:", loaderData);
   const { width, height } = useWindowSize();
   console.log(`🚀 ~ ProductDetails ~ {width,height}:`, { width, height });
 
