@@ -1,0 +1,25 @@
+.testClass {
+  background-color: green;
+}
+
+a.active {
+  color: red;
+}
+
+
+/* .shardClass {
+  color: yellow;
+  font-size: 24px;
+  font-weight: bold;
+} */
+
+.custom-nav-link {
+  /* the class from same file */
+  /* composes: shardClass;  */
+  /* the class from another file */
+  composes: shardClass from '../TheFooter/TheFooter.module.css'
+}
+
+/* :global(.custom-nav-link) {
+  color: yellow;
+} */

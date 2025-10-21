@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router";
 
-import "./TheHeader.css";
+import classes from "./TheHeader.module.css";
 
 const headerNavLinks = [
   { path: "/", name: "Home" },
@@ -14,12 +14,18 @@ const headerNavLinks = [
 
 function TheHeader() {
   return (
-    <header>
+    // classes['test-class']
+    <header className={classes.testClass}>
       <nav>
         <ul className="list-unstyled d-flex justify-content-between">
           {headerNavLinks.map(({ path, name }) => (
             <li key={path}>
-              <NavLink to={path}>{name}</NavLink>
+              <NavLink
+                to={path}
+                className={`${classes["custom-nav-link"]} custom-nav-link`}
+              >
+                {name}
+              </NavLink>
             </li>
           ))}
         </ul>

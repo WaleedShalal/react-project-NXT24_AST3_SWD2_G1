@@ -1,6 +1,8 @@
+import classes from "./TheFooter.module.css";
+
 function TheFooter() {
   return (
-    <footer>
+    <footer className={classes.testClass}>
       <p>react project copyright@2025</p>
     </footer>
   );

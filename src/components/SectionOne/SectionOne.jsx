@@ -2,9 +2,9 @@ import UserContext from "@/contexts/User/UserContext";
 import React, { useContext } from "react";
 
 function SectionOne(props) {
-  console.log("🚀 ~ SectionOne ~ props:", props);
+  // console.log("🚀 ~ SectionOne ~ props:", props);
   const sharedData = useContext(UserContext);
-  console.log("🚀 ~ SectionOne ~ sharedData:", sharedData);
+  // console.log("🚀 ~ SectionOne ~ sharedData:", sharedData);
 
   return (
     <div>

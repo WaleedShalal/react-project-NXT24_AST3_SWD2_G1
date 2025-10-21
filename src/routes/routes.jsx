@@ -7,7 +7,7 @@ import AuthLayout from "@/layouts/AuthLayout/AuthLayout";
 import Home from "@/pages/Home/Home";
 import Admin from "@/pages/Admin/Admin";
 import Cart from "@/pages/Cart/Cart";
-import Products from "@/pages/Products/Product.s";
+import Products from "@/pages/Products/Products";
 import ProductDetails from "@/pages/ProductDetails/ProductDetails";
 import Category from "@/pages/Category/Category";
 import Login from "@/pages/Login/Login";
