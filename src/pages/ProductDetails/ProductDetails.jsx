@@ -7,8 +7,6 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import useWindowSize from "../../hooks/useWindowSize";
 
-const URL = "https://fakestoreapi.com/products/";
-
 export default function ProductDetails() {
   console.log("ProductDetails Component");
 
@@ -17,7 +15,7 @@ export default function ProductDetails() {
   const { width, height } = useWindowSize();
   console.log(`🚀 ~ ProductDetails ~ {width,height}:`, { width, height });
 
-  const { id, isLoading, isError, data, getProductDetails } = useFetch(URL);
+  const { id, isLoading, isError, data, getProductDetails } = useFetch();
 
   useEffect(() => {
     // getProductDetails();

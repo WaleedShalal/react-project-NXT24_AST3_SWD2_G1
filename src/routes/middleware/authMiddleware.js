@@ -6,7 +6,7 @@ const authMiddleware = async (params, next) => {
   // await next()
   // after
   // get info from cookie
-  const isLoggedIn = false;
+  const isLoggedIn = true;
   if (!isLoggedIn) {
     throw redirect("/login");
   }

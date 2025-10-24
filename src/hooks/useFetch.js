@@ -1,7 +1,8 @@
+import apis from "@/services/apis";
 import { useState } from "react";
 import { useParams } from "react-router";
 
-export default function useFetch(url) {
+export default function useFetch() {
   const { id } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -10,8 +11,8 @@ export default function useFetch(url) {
 
   const getProductDetails = async () => {
     try {
-      const response = await fetch(`${url}${id}`);
-      const data = await response.json();
+      const data = await apis.getProductApi(id);
+      console.log("🚀 ~ getProductDetails ~ data:", data);
       setData(data);
     } catch (error) {
       setIsError(true);
