@@ -1,6 +1,12 @@
 import { Link, NavLink } from "react-router";
 
 import classes from "./TheHeader.module.css";
+import HeaderNavItem from "./HeaderNavItem/HeaderNavItem";
+import HeaderSearch from "./HeaderSearch/HeaderSearch";
+import HeaderCart from "./HeaderCart/HeaderCart";
+import HeaderAuth from "./HeaderAuth/HeaderAuth";
+import useWindowSize from "@/hooks/useWindowSize";
+import { Container } from "react-bootstrap";
 
 const headerNavLinks = [
   { path: "/", name: "Home" },
@@ -12,24 +18,37 @@ const headerNavLinks = [
   { path: "/register", name: "Resgister" },
 ];
 
+const navLinks = [
+  { name: "Shop", path: "/shop" },
+  { name: "On Sale", path: "/on-sale" },
+  { name: "New Arrivals", path: "/new-arrivals" },
+  { name: "Brands", path: "/brands" },
+];
+
 function TheHeader() {
+  const { width } = useWindowSize();
+  const isMobileView = width <= 991;
   return (
     // classes['test-class']
-    <header className={classes.testClass}>
-      <nav>
-        <ul className="list-unstyled d-flex justify-content-between">
-          {headerNavLinks.map(({ path, name }) => (
-            <li key={path}>
-              <NavLink
-                to={path}
-                className={`${classes["custom-nav-link"]} custom-nav-link`}
-              >
-                {name}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </nav>
+    <header className={classes.mainHeader}>
+      <Container>
+        {isMobileView && <button>🤺</button>}
+        <nav>
+          <Link to="/" className={classes.logo}>
+            <span>Shop.co</span>
+          </Link>
+          {!isMobileView && (
+            <ul className={classes.navList}>
+              {navLinks.map(({ path, name }) => (
+                <HeaderNavItem key={name} name={name} path={path} />
+              ))}
+            </ul>
+          )}
+          <HeaderSearch />
+          <HeaderCart />
+          <HeaderAuth />
+        </nav>
+      </Container>
     </header>
   );
 }

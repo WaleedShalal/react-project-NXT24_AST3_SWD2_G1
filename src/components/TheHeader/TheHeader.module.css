@@ -1,25 +1,24 @@
-.testClass {
-  background-color: green;
+.mainHeader {
+  display: flex;
 }
 
-a.active {
-  color: red;
+.mainHeader nav {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
 }
 
-
-/* .shardClass {
-  color: yellow;
-  font-size: 24px;
+.logo {
+  font-size: 32px;
   font-weight: bold;
-} */
-
-.custom-nav-link {
-  /* the class from same file */
-  /* composes: shardClass;  */
-  /* the class from another file */
-  composes: shardClass from '../TheFooter/TheFooter.module.css'
+  text-decoration: none;
+  padding-inline-end: 40px;
 }
 
-/* :global(.custom-nav-link) {
-  color: yellow;
-} */
+.navList {
+  display: flex;
+  column-gap: 24px;
+  list-style: none;
+  margin-bottom: 0;
+  padding-inline: 0 40px;
+}

@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import SectionTitle from "./../../components/SectionTitle/SectionTitle";
+import Brands from "@/components/Brands/Brands";
 
 export default function Home() {
   const { counterValue } = useSelector(({ counter }) => counter);
@@ -12,6 +13,8 @@ export default function Home() {
   });
   return (
     <div className="home-page ">
+      <Brands />
+
       <h2>Counter: {counterValue}</h2>
       <section>
         <SectionTitle title="New Arrival" />

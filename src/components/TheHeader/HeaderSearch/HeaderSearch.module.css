@@ -1,0 +1,25 @@
+.headerSearch {
+  flex-grow: 1;
+  max-width: 580px;
+  padding-inline-end: 40px;
+}
+
+.headerSearch>div {
+  display: flex;
+  border-radius: 25px;
+  background-color: #F0F0F0;
+  padding-block: 12px;
+  padding-inline: 16px;
+}
+
+.headerSearch>div>input {
+  flex-grow: 1;
+  border: none;
+  background-color: #F0F0F0;
+  padding-inline-start: 12px;
+}
+
+.headerSearch>div>input:focus {
+  outline: none;
+
+}

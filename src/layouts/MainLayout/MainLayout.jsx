@@ -10,13 +10,11 @@ import "./MainLayout.css";
 export default function MainLayout() {
   return (
     <div className="main-layout">
-      <Container>
-        <TheHeader />
-        <main>
-          <Outlet />
-        </main>
-        <TheFooter />
-      </Container>
+      <TheHeader />
+      <main>
+        <Outlet />
+      </main>
+      <TheFooter />
     </div>
   );
 }
