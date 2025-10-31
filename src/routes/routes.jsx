@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router";
 
 // layouts
@@ -7,13 +8,15 @@ import AuthLayout from "@/layouts/AuthLayout/AuthLayout";
 import Home from "@/pages/Home/Home";
 import Admin from "@/pages/Admin/Admin";
 import Cart from "@/pages/Cart/Cart";
-import Products from "@/pages/Products/Products";
+// import Products from "@/pages/Products/Products";
 import ProductDetails from "@/pages/ProductDetails/ProductDetails";
 import Category from "@/pages/Category/Category";
 import Login from "@/pages/Login/Login";
 import Register from "@/pages/Register/Register";
 import NotFound from "@/pages/NotFound/NotFound";
 import authMiddleware from "./middleware/authMiddleware";
+
+const Products = lazy(() => import("@/pages/Products/Products"));
 
 const router = createBrowserRouter([
   {
@@ -37,7 +40,14 @@ const router = createBrowserRouter([
             },
           },
           { path: "cart", Component: Cart },
-          { path: "products", Component: Products },
+          {
+            path: "products",
+            Component: () => (
+              <Suspense fallback={<div>LOOOOOODINNNNNNGGGGGG 🔃🔃🔃🔃</div>}>
+                <Products />
+              </Suspense>
+            ),
+          },
           {
             path: "product-details/:id",
             Component: ProductDetails,

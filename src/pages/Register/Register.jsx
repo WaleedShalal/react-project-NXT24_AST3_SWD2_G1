@@ -1,7 +1,14 @@
+import { useEffect, useRef } from "react";
 import { Form, useActionData } from "react-router";
 
 export default function Register() {
   const actionData = useActionData();
+  const firstInputRef = useRef();
+  console.log("🚀 ~ Register ~ firstInputRef 1:", firstInputRef);
+  useEffect(() => {
+    firstInputRef.current.focus();
+    console.log("🚀 ~ Register ~ firstInputRef 2:", firstInputRef);
+  }, []);
   console.log("🚀 ~ Register ~ actionData:", actionData);
   // const handleSubmit = (e) => {
   //   e.preventDefault();
@@ -23,7 +30,7 @@ export default function Register() {
       </div>
       <div>
         <label htmlFor="user-age">User Age</label>
-        <input type="number" id="user-age" name="userAge" />
+        <input ref={firstInputRef} type="number" id="user-age" name="userAge" />
       </div>
       <button>Submit</button>
     </Form>

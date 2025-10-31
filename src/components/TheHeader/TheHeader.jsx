@@ -7,6 +7,8 @@ import HeaderCart from "./HeaderCart/HeaderCart";
 import HeaderAuth from "./HeaderAuth/HeaderAuth";
 import useWindowSize from "@/hooks/useWindowSize";
 import { Container } from "react-bootstrap";
+import withLoading from "@/HOC/withLoading";
+import { useTranslation } from "react-i18next";
 
 const headerNavLinks = [
   { path: "/", name: "Home" },
@@ -26,31 +28,54 @@ const navLinks = [
 ];
 
 function TheHeader() {
+  const {
+    i18n: { t, languages, dir, changeLanguage, language },
+  } = useTranslation();
+  const isRtl = dir() === "rtl";
+  console.log("🚀 ~ TheHeader ~ isRtl:", isRtl);
+
+  console.log(
+    `🚀 ~ TheHeader ~ {t,languages, dir, changeLanguage, language,...rest }:`,
+    languages
+  );
   const { width } = useWindowSize();
   const isMobileView = width <= 991;
   return (
     // classes['test-class']
-    <header className={classes.mainHeader}>
-      <Container>
-        {isMobileView && <button>🤺</button>}
-        <nav>
-          <Link to="/" className={classes.logo}>
-            <span>Shop.co</span>
-          </Link>
-          {!isMobileView && (
-            <ul className={classes.navList}>
-              {navLinks.map(({ path, name }) => (
-                <HeaderNavItem key={name} name={name} path={path} />
-              ))}
-            </ul>
-          )}
-          <HeaderSearch />
-          <HeaderCart />
-          <HeaderAuth />
-        </nav>
-      </Container>
-    </header>
+    <>
+      {
+        <ul>
+          {languages.map((lang) => (
+            <li key={lang}>
+              <button onClick={() => changeLanguage(lang)}>{lang}</button>
+            </li>
+          ))}
+        </ul>
+      }
+      <header className={classes.mainHeader}>
+        <Container>
+          {isMobileView && <button>🤺</button>}
+          <nav>
+            <Link to="/" className={classes.logo}>
+              <span>Shop.co</span>
+            </Link>
+            {!isMobileView && (
+              <ul className={classes.navList}>
+                {navLinks.map(({ path, name }) => (
+                  <HeaderNavItem key={name} name={t(name)} path={path} />
+                ))}
+              </ul>
+            )}
+            <HeaderSearch />
+            <HeaderCart />
+            <HeaderAuth />
+          </nav>
+        </Container>
+      </header>
+    </>
   );
 }
+
+// const TheHeaderWithLoading = withLoading(TheHeader);
 
 export default TheHeader;

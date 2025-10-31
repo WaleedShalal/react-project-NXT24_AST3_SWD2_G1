@@ -3,6 +3,7 @@ import { Outlet } from "react-router";
 import TheFooter from "../../components/TheFooter/TheFooter";
 
 import "./AuthLayout.css";
+import { ErrorBoundary } from "react-error-boundary";
 
 export default function AuthLayout() {
   return (
@@ -10,7 +11,9 @@ export default function AuthLayout() {
       <main>
         <Outlet />
       </main>
-      <TheFooter />
+      <ErrorBoundary fallback={<div>Something went wrong ❌❌</div>}>
+        <TheFooter />
+      </ErrorBoundary>{" "}
     </div>
   );
 }

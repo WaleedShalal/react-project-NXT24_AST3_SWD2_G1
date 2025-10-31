@@ -1,6 +1,5 @@
 import { Outlet } from "react-router";
-
-import { Container } from "react-bootstrap";
+import { ErrorBoundary } from "react-error-boundary";
 
 import TheHeader from "../../components/TheHeader/TheHeader";
 import TheFooter from "./../../components/TheFooter/TheFooter";
@@ -14,7 +13,9 @@ export default function MainLayout() {
       <main>
         <Outlet />
       </main>
-      <TheFooter />
+      <ErrorBoundary fallback={<div>Something went wrong ❌❌</div>}>
+        <TheFooter />
+      </ErrorBoundary>
     </div>
   );
 }

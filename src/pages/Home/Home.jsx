@@ -2,8 +2,22 @@ import { useSelector } from "react-redux";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import SectionTitle from "./../../components/SectionTitle/SectionTitle";
 import Brands from "@/components/Brands/Brands";
+import { useQuery } from "@tanstack/react-query";
+import apis from "@/services/apis";
+
+const apiFn = async () => await apis.getAllProductsApi();
 
 export default function Home() {
+  const {
+    data: productsData,
+    isLoading: isLoadingProducts,
+    isError: isErrorProducts,
+  } = useQuery({
+    queryKey: ["getAllProductsApi"],
+    queryFn: () => apiFn(),
+  });
+  console.log("queryKey", { productsData, isLoadingProducts, isErrorProducts });
+
   const { counterValue } = useSelector(({ counter }) => counter);
   const { data, isLoading, isError } = useSelector(({ products }) => products);
   console.log(`🚀 ~ Home ~ { data,isLoading,isError }:`, {
